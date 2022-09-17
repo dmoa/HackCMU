@@ -191,9 +191,13 @@
 
     // So we don't add duplicate posts
     let current_posts_added = [];
+    // So we can access the current type in findPost / onValue
+    var types = ["See BeSads.", "See BeDowns.", "See BeContents.", "See BeHappys.", "See BeEcstatics."];
+    var type = document.getElementById("typeText");
+    var active = document.getElementById("content");
 
     var postDatabase = getDatabase(app);
-    function findPost(type) {
+    function findPost() {
         current_posts_added = [];
         const happyPost = ref(postDatabase);
         var posts = child(happyPost, 'Posts');
@@ -201,8 +205,15 @@
         grid.innerHTML = "";
         onValue(posts, (snapshot) => {
         snapshot.forEach(function (childSnapshot) {
-        // Value = id
-            if (childSnapshot.val().type == type && ! current_posts_added.includes(childSnapshot.val().value)) {
+
+            // get current "be" subsection
+            let type_subsection = type.innerText.substring(4, type.innerText.length - 2) + ".";
+
+            // Value = id
+            console.log("----------------");
+            console.log(childSnapshot.val().type);
+            console.log(type_subsection);
+            if ((childSnapshot.val().type == type_subsection) && (!current_posts_added.includes(childSnapshot.val().value))) {
 
                 current_posts_added.push(childSnapshot.val().value);
 
@@ -212,9 +223,9 @@
         });
       });
     }
-    var types = ["See BeSads.", "See BeDowns.", "See BeContents.", "See BeHappys.", "See BeEcstatics."];
-    var type = document.getElementById("typeText");
-    var active = document.getElementById("content");
+
+    // When we submit a post:
+
     if (location.search.split("=")[1] < 20) {
       type.innerText = types[0];
       findPost("BeSad.");
