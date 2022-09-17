@@ -70,10 +70,8 @@
         </div>
         <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
           <div class="flex flex-shrink-0 items-center">
-            <img class="block h-8 w-auto lg:hidden"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
-            <img class="hidden h-8 w-auto lg:block"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
+            <img class="block h-8 w-auto lg:hidden" src="beyoulogo.svg" alt="Your Company">
+            <img class="hidden h-8 w-auto lg:block" src="beyoulogo.svg" alt="Your Company">
             <h1 class="text-nord4 px-3 py-1 text-3xl">BeYou.</h1>
           </div>
           <div class="hidden sm:ml-6 sm:block">
@@ -91,7 +89,8 @@
         <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
           <button class="flex flex-cols">
             <a href="addbeyou.html"
-              class="flex flex-cols items-center space-x-4 text-nord5 hover:bg-nord1 hover:text-nord4 px-3 py-2 rounded-md text-sm font-medium">Add Your BeYou
+              class="flex flex-cols items-center space-x-4 text-nord5 hover:bg-nord1 hover:text-nord4 px-3 py-2 rounded-md text-sm font-medium">Add
+              Your BeYou
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6 ml-2 text-nord5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
@@ -179,98 +178,92 @@
         class="font-extrabold text-transparent text-6xl bg-clip-text bg-gradient-to-r from-nord4 to-nord5">
         See BeHappys.
       </h1>
-      <div id="beYouGrid" class="grid grid-cols-2 gap-4">
-        <a href="#"
-          class="dark block w-full p-6 max-w-sm bg-nord1 rounded-lg border border-nord3 shadow-md hover:bg-nord2 dark:bg-nord1 dark:border-nord3 dark:hover:bg-nord3">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-transparent text-3xl bg-clip-text bg-gradient-to-r from-nord8 to-nord9">Today's hackathon submission day! I'm ready to showcase my project to the world.</h5>
-          <p class="font-normal text-gray-700 dark:text-gray-400">September 17, 10:45 AM</p>
-        </a>
-        <a href="#"
-          class="dark block w-full p-6 max-w-sm bg-nord1 rounded-lg border border-nord3 shadow-md hover:bg-nord2 dark:bg-nord1 dark:border-nord3 dark:hover:bg-nord3">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-transparent text-3xl bg-clip-text bg-gradient-to-r from-nord8 to-nord9">Noteworthy technology
-            acquisitions 2021</h5>
-          <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions
-            of 2021 so far, in reverse chronological order.</p>
-        </a>
-        <a href="#"
-          class="dark block w-full p-6 max-w-sm bg-nord1 rounded-lg border border-nord3 shadow-md hover:bg-nord2 dark:bg-nord1 dark:border-nord3 dark:hover:bg-nord3">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-transparent text-3xl bg-clip-text bg-gradient-to-r from-nord8 to-nord9">Noteworthy technology
-            acquisitions 2021</h5>
-          <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions
-            of 2021 so far, in reverse chronological order.</p>
-        </a>
-      </div>
-
-      <div></div>
+      <div id="beYouGrid" class="w-full grid grid-cols-2 gap-4"></div>
     </div>
   </div>
   <hr class="space-y-1 border-1 border-nord3">
   <footer class="h20 py-5 flex flex-1 flex-col justify-center items-center text-center">
     <h2 class="text-nord4 text-l text-medium">Made with ❤️ by the <b>bonobo</b> team at HackCMU.</h2>
   </footer>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+    import { getDatabase, push, set, child, ref, onValue} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-database.js";
 
-  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAHRbCmE_ynGBxlW0x5J9u9H3XBOrFhedA",
+      authDomain: "beyou-21d2f.firebaseapp.com",
+      databaseURL: "https://beyou-21d2f-default-rtdb.firebaseio.com",
+      projectId: "beyou-21d2f",
+      storageBucket: "beyou-21d2f.appspot.com",
+      messagingSenderId: "718679255077",
+      appId: "1:718679255077:web:a5d19b54e474a1d968b7cc",
+      measurementId: "G-FVD7M6CJ1Z"
+    };
+
+    const app = initializeApp(firebaseConfig);
+
+    var postDatabase = getDatabase(app);
+    function findPost(type) {
+      const happyPost = ref(postDatabase);
+      var posts = child(happyPost, 'Posts');
+      var grid = document.getElementById("beYouGrid");
+      grid.innerHTML = "";
+      onValue(posts, (snapshot) => {
+        snapshot.forEach(function (childSnapshot) {
+          if (childSnapshot.val().type == type) {
+            grid.innerHTML += "<a href='#' class='dark bg-nord12 block w-full p-6 bg-nord1 rounded-lg border border-nord3 shadow-md hover:bg-nord2 dark:bg-nord1 dark:border-nord3 dark:hover:bg-nord3'> <h5 class='mb-2 text-2xl font-bold tracking-tight text-transparent text-3xl bg-clip-text bg-gradient-to-r from-nord8 to-nord9'>" + childSnapshot.val().text + "</h5> <p class='font-normal text-gray-700 dark:text-gray-400'>" + childSnapshot.val().time + "</p> </a>";
+            console.log(childSnapshot.val().text);
+          }
+        });
+      });
+    }
     var types = ["See BeDepresseds.", "See BeSads.", "See BeContents.", "See BeHappys.", "See BeEcstatics."];
     var type = document.getElementById("typeText");
-
+    var active = document.getElementById("content");
     if (location.search.split("=")[1] < 20) {
-        type.innerText = types[0];
-      } else if (location.search.split("=")[1] < 40) {
-        type.innerText = types[1];
-      } else if (location.search.split("=")[1]< 60) {
-        type.innerText = types[2];
-      } else if (location.search.split("=")[1]< 80) {
-        type.innerText = types[3];
-      } else {
-        type.innerText = types[4];
+      type.innerText = types[0];
+      findPost("BeDepressed.");
+    } else if (location.search.split("=")[1] < 40) {
+      type.innerText = types[1];
+      findPost("BeSad.");
+    } else if (location.search.split("=")[1] < 60) {
+      type.innerText = types[2];
+      findPost("BeContent.");
+    } else if (location.search.split("=")[1] < 80) {
+      type.innerText = types[3];
+      findPost("BeHappy.");
+    } else if (location.search.split("=")[1] < 100) {
+      type.innerText = types[4];
+      findPost("BeEcstatic.");
+    } else {
+      type.innerText = types[3];
+      findPost("BeHappy.");
     }
-    document.getElementById("depressed").addEventListener("click", function(){
+    document.getElementById("depressed").addEventListener("click", function () {
       document.getElementById("typeText").innerText = "See BeDepresseds.";
+      findPost("BeDepressed.");
     });
 
-    document.getElementById("sad").addEventListener("click", function(){
+    document.getElementById("sad").addEventListener("click", function () {
       document.getElementById("typeText").innerText = "See BeSads.";
+      findPost("BeSad.");
     });
 
-    document.getElementById("content").addEventListener("click", function(){
+    document.getElementById("content").addEventListener("click", function () {
       document.getElementById("typeText").innerText = "See BeContents.";
+      findPost("BeContent.");
     });
 
-    document.getElementById("happy").addEventListener("click", function(){
+    document.getElementById("happy").addEventListener("click", function () {
       document.getElementById("typeText").innerText = "See BeHappys.";
+      findPost("BeHappy.");
     });
 
-    document.getElementById("ecstatic").addEventListener("click", function(){
+    document.getElementById("ecstatic").addEventListener("click", function () {
       document.getElementById("typeText").innerText = "See BeEcstatics.";
+      findPost("BeEcstatic.");
     });
   </script>
-<script>
-  import { getDatabase, ref, onValue} from "firebase/database";
-  const database = getDatabase();
-
-  function happy()
-  {
-     
-  }
-  function sad()
-  {
-
-  }
-  function depressed()
-  {
-
-  }
-  function ecstatic()
-  {
-
-  }
-  function content()
-  {
-
-  }
-
-  
-</script>
 </body>
 
 </html>
