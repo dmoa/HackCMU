@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.plot.ly/plotly-2.14.0.min.js"></script>
   <script>
-      module.exports = {
+      tailwind.config = {
     theme: {
-      extend: {
+      extend:{
         colors: {
           'regal-blue': '#243c5a',
           /*
@@ -40,19 +42,18 @@
           'nord15': '#b48ead'
         },
         fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
-        },
+        // sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        }
       }
     }
   }
 
   </script>
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-zinc-800">
+<body class="bg-nord0">
   <!-- This example requires Tailwind CSS v2.0+ -->
-<nav class="bg-zinc-800 divide-y">
+<nav class="bg-nord0 divide-y">
   <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
     <div class="relative flex h-20 items-center justify-between">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -63,18 +64,25 @@
         <div class="flex flex-shrink-0 items-center">
           <img class="block h-8 w-auto lg:hidden" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
           <img class="hidden h-8 w-auto lg:block" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
-          <h1 class="text-white px-3 py-1 text-3xl">BeYou.</h1>
+          <h1 class="text-nord4 px-3 py-1 text-3xl">BeYou.</h1>
         </div>
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex flex-1 space-x-4 items-center justify-center">
-            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-nord2 hover:text-white" -->
-            <a href="#" class="bg-zinc-600 text-white m-2 px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Add Your BeYou</a>
+            <!-- Current: "bg-gray-900 text-nord4", Default: "text-nord5 hover:bg-nord1 hover:text-nord4" -->
+            <a href="#" class="bg-nord3 text-nord4 m-2 px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Add Your BeYou</a>
 
-            <a href="#" class="text-gray-300 hover:bg-nord2 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Find BeYous</a>
-
-            <a href="#" class="text-gray-300 hover:bg-nord2 hover:text-white px-3 py-2 rounded-md text-sm font-medium">See BeYous</a>
+            <a href="#" class="text-nord5 hover:bg-nord1 hover:text-nord4 px-3 py-2 rounded-md text-sm font-medium">See BeYous</a>
           </div>
         </div>
+      </div>
+      <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+        <button class="flex flex-cols">
+          <a href="#" class="flex flex-cols items-center space-x-4 text-nord5 hover:bg-nord1 hover:text-nord4 px-3 py-2 rounded-md text-sm font-medium">Find BeYous
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ml-2 text-nord5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+            </svg>
+          </a>              
+        </button>
       </div>
     </div>
   </div>
@@ -82,19 +90,19 @@
   <!-- Mobile menu, show/hide based on menu state. -->
   <div class="sm:hidden" id="mobile-menu">
     <div class="space-y-1 px-2 pt-2 pb-3">
-      <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-nord2 hover:text-white" -->
-      <a href="#" class="bg-zinc-600 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Add Your BeYou</a>
+      <!-- Current: "bg-gray-900 text-nord4", Default: "text-nord5 hover:bg-nord1 hover:text-nord4" -->
+      <a href="#" class="bg-zinc-600 text-nord4 px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Add Your BeYou</a>
 
-      <a href="#" class="text-gray-300 hover:bg-nord2 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Find BeYous</a>
+      <a href="#" class="text-nord5 hover:bg-nord1 hover:text-nord4 px-3 py-2 rounded-md text-sm font-medium">Find BeYous</a>
 
-      <a href="#" class="text-gray-300 hover:bg-nord2 hover:text-white px-3 py-2 rounded-md text-sm font-medium">See BeYous</a>
+      <a href="#" class="text-nord5 hover:bg-nord1 hover:text-nord4 px-3 py-2 rounded-md text-sm font-medium">See BeYous</a>
     </div>
   </div>
-  <hr class="space-y-1 bg-nord0">
+  <hr class="space-y-1 border-1 border-nord3">
 </nav>
-<div class="h-screen mx-5 my-5 text-center items-center justify-center sm:items-stretch sm:justify-start">
-  <h1 class="text-white text-8xl">Make this boilerplate</h1>
-  <h1 class="font-extrabold text-transparent text-8xl bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+<div class="h-full mx-20 my-20 text-center items-center justify-center sm:items-stretch sm:justify-start">
+  <h1 class="text-nord4 text-8xl">Make this boilerplate</h1>
+  <h1 class="font-extrabold text-transparent text-8xl bg-clip-text bg-gradient-to-r from-nord11 to-nord12">
   BeBetter.
 </h1>
 
@@ -134,4 +142,5 @@
   }
 </script>
 </body>
+
 </html>
