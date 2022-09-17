@@ -149,7 +149,7 @@
     <hr class="space-y-1 border-1 border-nord3">
   </nav>
   <div class="h-4/5 flex flex-col justify-center items-center border-3">
-    <div class="w-4/5 h-4/5 px-20 py-10 flex flex-col space-y-8">
+    <form class="w-4/5 h-4/5 px-20 py-10 flex flex-col space-y-8" method="post" id="addbeyou">
       <div class="space-x-2 flex flex-row">
         <h1 class="text-nord4 text-6xl">I want to </h1>
         <h1 id="typeText"
@@ -157,25 +157,27 @@
           BeContent.
         </h1>
       </div>
-        <div class="space-x-2 flex flex-row justify-center items-center">
-          <p1 class="text-5xl">😔</p1>
-          <input id="valueControl" type="range" value="50"
-            class="newthumb w-full h-3 bg-nord8 nord8 rounded-lg appearance-none cursor-pointer dark:bg-nord3">
-          <p1 class="text-5xl">😊</p1>
-        </div>
+
+      <div class="space-x-2 flex flex-row justify-center items-center">
+        <p1 class="text-5xl">😔</p1>
+        <input id="valueControl" type="range" value="50"
+          class="newthumb w-full h-3 bg-nord8 nord8 rounded-lg appearance-none cursor-pointer dark:bg-nord3">
+        <p1 class="text-5xl">😊</p1>
+      </div>
       <div class="flex flex-col justify-between space-y-3">
         <textarea id="message" rows="4" style="resize: none;"
           class="text-xl block p-2.5 w-full text-gray-900 bg-gray-50 rounded-lg border border-nord2 focus:ring-nord2 focus:border-nord2 dark:bg-nord1 dark:border-nord0 dark:placeholder-gray-400 dark:text-nord8"
           placeholder="Describe your BeYou..."></textarea>
-          <div class="flex flex-row justify-between">
-            <div class="flex flex-row justify-left around space-x-0.5 text-nord6">
-              <p1 id="characters" class="text-l font-bold">0</p1>
-              <p1 id="characterLabel" class="text-l"> characters</p1>
-            </div>
-            <button type="submit" class="text-nord6 bg-gradient-to-r from-nord8 to-nord9 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-nord8 dark:focus:ring-nord9 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
+        <div class="flex flex-row justify-between">
+          <div class="flex flex-row justify-left around space-x-0.5 text-nord6">
+            <p1 id="characters" class="text-l font-bold">0</p1>
+            <p1 id="characterLabel" class="text-l"> characters</p1>
           </div>
+          <button type="submit"
+            class="text-nord6 bg-gradient-to-r from-nord8 to-nord9 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-nord8 dark:focus:ring-nord9 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
+        </div>
       </div>
-    </div>
+    </form>
   </div>
   </div>
   <hr class="space-y-1 border-1 border-nord3">
@@ -206,7 +208,7 @@
         type.innerText = types[4];
       }
     }
-    
+
     message.addEventListener("input", changeCharacterCount);
 
     function changeCharacterCount() {
