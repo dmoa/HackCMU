@@ -254,6 +254,7 @@ function submit(e)
     var time  = date.getHours() + ":"+date.getMinutes();
     console.log('working');
     saveMessages(location, type, value, text, time);
+    window.location = "beyous.html?" + "value=" + value;
 }
 
 const saveMessages = (location, type, value, text, time) => 
