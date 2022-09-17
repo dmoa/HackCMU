@@ -104,7 +104,7 @@
 
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
-  import { getDatabase } from "firebase/database";
+  import { getDatabase, ref, set } from "firebase/database";
 
   const firebaseConfig = {
     apiKey: "AIzaSyAHRbCmE_ynGBxlW0x5J9u9H3XBOrFhedA",
@@ -120,6 +120,18 @@
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
+  
+
+  function postData(postID, posts, location, type, text)
+  {
+    const database = getDatabase();
+    set(ref(database, 'posts/' + postID),{
+      posts: posts,
+      location: location,
+      type: type,
+      text: text
+    });
+  }
 </script>
 </body>
 </html>
