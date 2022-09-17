@@ -12,6 +12,7 @@
   <script src="https://cdn.plot.ly/plotly-2.14.0.min.js"></script>
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           colors: {
@@ -89,41 +90,41 @@
 
 <body class="h-screen flex flex-col bg-nord0">
   <!-- This example requires Tailwind CSS v2.0+ -->
-  <nav class="bg-nord0 divide-y">
-    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-      <div class="relative flex h-20 items-center justify-between">
-        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+  <nav class="dark bg-nord0 divide-y">
+    <div class="dark mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div class="dark relative flex h-20 items-center justify-between">
+        <div class="dark absolute inset-y-0 left-0 flex items-center sm:hidden">
           <!-- Mobile menu button-->
 
         </div>
-        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-          <div class="flex flex-shrink-0 items-center">
-            <img class="block h-8 w-auto lg:hidden" src="https://tailwindui.com/img/logos/mark.svg?color=white"
+        <div class="dark flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+          <div class="dark flex flex-shrink-0 items-center">
+            <img class="dark block h-8 w-auto lg:hidden" src="https://tailwindui.com/img/logos/mark.svg?color=white"
               alt="Your Company">
-            <img class="hidden h-8 w-auto lg:block" src="https://tailwindui.com/img/logos/mark.svg?color=white"
+            <img class="dark hidden h-8 w-auto lg:block" src="https://tailwindui.com/img/logos/mark.svg?color=white"
               alt="Your Company">
-            <h1 class="font-bold px-3 py-1 text-transparent text-3xl bg-clip-text bg-gradient-to-r from-nord8 to-nord9">
+            <h1 class="dark font-bold px-3 py-1 text-transparent text-3xl bg-clip-text bg-gradient-to-r from-nord8 to-nord9">
               BeYou.</h1>
           </div>
-          <div class="hidden sm:ml-6 sm:block">
-            <div class="flex flex-1 space-x-4 items-center justify-center">
+          <div class="dark hidden sm:ml-6 sm:block">
+            <div class="dark flex flex-1 space-x-4 items-center justify-center">
               <!-- Current: "bg-gray-900 text-nord4", Default: "text-nord5 hover:bg-nord1 hover:text-nord4" -->
-              <a href="#" class="bg-nord3 text-nord4 m-2 px-3 py-2 rounded-md text-sm font-medium"
+              <a href="#" class="dark bg-nord3 text-nord4 m-2 px-3 py-2 rounded-md text-sm font-medium"
                 aria-current="page">Add Your BeYou</a>
 
               <a href="#"
-                class="text-nord5 hover:bg-nord1 hover:text-nord4 px-3 py-2 rounded-md text-sm font-medium">Find
+                class="dark text-nord5 hover:bg-nord1 hover:text-nord4 px-3 py-2 rounded-md text-sm font-medium">Find
                 BeYous</a>
             </div>
           </div>
         </div>
-        <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-          <button class="flex flex-cols">
+        <div class="dark absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <button class="dark flex flex-cols">
             <a href="#"
-              class="flex flex-cols items-center space-x-4 text-nord5 hover:bg-nord1 hover:text-nord4 px-3 py-2 rounded-md text-sm font-medium">See
+              class="dark flex flex-cols items-center space-x-4 text-nord5 hover:bg-nord1 hover:text-nord4 px-3 py-2 rounded-md text-sm font-medium">See
               BeYous
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="w-6 h-6 ml-2 text-nord5">
+                stroke="currentColor" class="dark w-6 h-6 ml-2 text-nord5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
               </svg>
             </a>
@@ -133,33 +134,33 @@
     </div>
 
     <!-- Mobile menu, show/hide based on menu state. -->
-    <div class="sm:hidden" id="mobile-menu">
-      <div class="space-y-1 px-2 pt-2 pb-3">
+    <div class="dark sm:hidden" id="mobile-menu">
+      <div class="dark space-y-1 px-2 pt-2 pb-3">
         <!-- Current: "bg-gray-900 text-nord4", Default: "text-nord5 hover:bg-nord1 hover:text-nord4" -->
-        <a href="#" class="bg-zinc-600 text-nord4 px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Add Your
+        <a href="#" class="dark bg-zinc-600 text-nord4 px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Add Your
           BeYou</a>
 
-        <a href="#" class="text-nord5 hover:bg-nord1 hover:text-nord4 px-3 py-2 rounded-md text-sm font-medium">Find
+        <a href="#" class="dark text-nord5 hover:bg-nord1 hover:text-nord4 px-3 py-2 rounded-md text-sm font-medium">Find
           BeYous</a>
 
-        <a href="#" class="text-nord5 hover:bg-nord1 hover:text-nord4 px-3 py-2 rounded-md text-sm font-medium">See
+        <a href="#" class="dark text-nord5 hover:bg-nord1 hover:text-nord4 px-3 py-2 rounded-md text-sm font-medium">See
           BeYous</a>
       </div>
     </div>
-    <hr class="space-y-1 border-1 border-nord3">
+    <hr class="dark space-y-1 border-1 border-nord3">
   </nav>
-  <div class="h-4/5 flex flex-col justify-center items-center border-3">
-    <form class="w-4/5 h-4/5 px-20 py-10 flex flex-col space-y-8" method="post" id="addbeyou">
-      <div class="space-x-2 flex flex-row">
-        <h1 class="text-nord4 text-6xl">I want to </h1>
+  <div class="dark h-4/5 flex flex-col justify-center items-center border-3">
+    <form class="dark w-4/5 h-4/5 px-20 py-10 flex flex-col space-y-8" method="post" id="addbeyou">
+      <div class="dark space-x-2 flex flex-row">
+        <h1 class="dark text-nord4 text-6xl">I want to </h1>
         <h1 id="typeText"
-          class="font-extrabold text-transparent text-6xl bg-clip-text bg-gradient-to-r from-nord8 to-nord9">
+          class="dark font-extrabold text-transparent text-6xl bg-clip-text bg-gradient-to-r from-nord8 to-nord9">
           BeContent.
         </h1>
       </div>
 
-      <div class="space-x-2 flex flex-row justify-center items-center">
-        <p1 class="text-5xl">😔</p1>
+      <div class="dark space-x-2 flex flex-row justify-center items-center">
+        <p1 class="dark text-5xl">😔</p1>
         <input id="valueControl" type="range" value="50"
           class="newthumb w-full h-3 bg-nord8 nord8 rounded-lg appearance-none cursor-pointer dark:bg-nord3">
         <p1 class="text-5xl">😊</p1>
