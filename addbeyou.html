@@ -150,7 +150,7 @@
     <hr class="dark space-y-1 border-1 border-nord3">
   </nav>
   <div class="dark h-4/5 flex flex-col justify-center items-center border-3">
-    <form class="dark w-4/5 h-4/5 px-20 py-10 flex flex-col space-y-8" method="post" id="addbeyou">
+    <form class="dark w-4/5 h-4/5 px-20 py-10 flex flex-col justify-center space-y-8" method="post" id="addbeyou">
       <div class="dark space-x-2 flex flex-row">
         <h1 class="dark text-nord4 text-6xl">I want to </h1>
         <h1 id="typeText"
@@ -223,7 +223,7 @@
   </script>
 <script type = 'module'>
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
-  import { getDatabase } from "https://beyou-21d2f-default-rtdb.firebaseio.com/";
+  import { getDatabase } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-database.js";
   const firebaseConfig = {
     apiKey: "AIzaSyAHRbCmE_ynGBxlW0x5J9u9H3XBOrFhedA",
     authDomain: "beyou-21d2f.firebaseapp.com",
@@ -237,9 +237,9 @@
  
 const app = initializeApp(firebaseConfig);
 
-var postDatabase = getDatabase(app).ref('addbeyou');
+var postDatabase = getDatabase(app);
 
-document.getElementbyID('addbeyou').addEventListener('submit', submit)
+document.getElementByID('addbeyou').addEventListener('submit', submit);
 
 function submit(e)
 {
@@ -257,7 +257,7 @@ function submit(e)
 
 const saveMessages = (location, type, value, text, time) => 
 {
-    var newPost = postDatabase.push();
+    var newPost = push(child(ref(postDatabase), 'beyous'));
 
     newPost.set({
         location: location,
