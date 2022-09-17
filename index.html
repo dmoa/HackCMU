@@ -1,133 +1,279 @@
 <!doctype html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
   <script src="https://cdn.tailwindcss.com"></script>
-
+  <script src="https://cdn.plot.ly/plotly-2.14.0.min.js"></script>
   <script>
-      tailwind.config = {
-    theme: {
-      extend:{
-        colors: {
-          'regal-blue': '#243c5a',
-          /*
-          nord0->nord3, dark colors,"polar night"
-          nord4->nord6, light colors, "snow storm"
-          nord7 = pale green
-          nord8 = blue
-          nord9 = blue
-          nord10 = blue
-          nord11 = red
-          nord12 = orange
-          nord13 = yellow
-          nord14 = green
-          nord15 = purple
-          */
-          'nord0': '#2e3440',
-          'nord1': '#3b4252',
-          'nord2': '#434c5e',
-          'nord3': '#4c566a',
-          'nord4': '#d8dee9',
-          'nord5': '#e5e9f0',
-          'nord6': '#eceff4',
-          'nord7': '#8fbcbb',
-          'nord8': '#88c0d0',
-          'nord9': '#81a1c1',
-          'nord10': '#5e81ac',
-          'nord11': '#bf616a',
-          'nord12': '#d08770',
-          'nord13': '#ebcb8b',
-          'nord14': '#a3be8c',
-          'nord15': '#b48ead'
-        },
-        fontFamily: {
-        // sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'regal-blue': '#243c5a',
+            /*
+            nord0->nord3, dark colors,"polar night"
+            nord4->nord6, light colors, "snow storm"
+            nord7 = pale green
+            nord8 = blue
+            nord9 = blue
+            nord10 = blue
+            nord11 = red
+            nord12 = orange
+            nord13 = yellow
+            nord14 = green
+            nord15 = purple
+            */
+            'nord0': '#2e3440',
+            'nord1': '#3b4252',
+            'nord2': '#434c5e',
+            'nord3': '#4c566a',
+            'nord4': '#d8dee9',
+            'nord5': '#e5e9f0',
+            'nord6': '#eceff4',
+            'nord7': '#8fbcbb',
+            'nord8': '#88c0d0',
+            'nord9': '#81a1c1',
+            'nord10': '#5e81ac',
+            'nord11': '#bf616a',
+            'nord12': '#d08770',
+            'nord13': '#ebcb8b',
+            'nord14': '#a3be8c',
+            'nord15': '#b48ead'
+          },
+          fontFamily: {
+            // sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+          }
         }
       }
     }
-  }
 
   </script>
+  <style>
+    /* Special styling for WebKit/Blink */
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 36px;
+      width: 36px;
+      background: #88c0d0;
+    }
+
+    /* All the same stuff for Firefox */
+    input[type=range]::-moz-range-thumb {
+      background: #88c0d0;
+      width: 100%;
+      height: 36px;
+      width: 36px;
+      cursor: pointer;
+      /* Hides the slider so custom styles can be added */
+      background: transparent;
+      border-color: transparent;
+      color: transparent;
+    }
+
+    /* All the same stuff for IE */
+    input[type=range]::-ms-thumb {
+      background: #88c0d0;
+      height: 36px;
+      width: 36px;
+      cursor: pointer;
+    }
+  </style>
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 </head>
-<body class="bg-nord0">
-  <!-- This example requires Tailwind CSS v2.0+ -->
-<nav class="bg-nord0 divide-y">
-  <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-    <div class="relative flex h-20 items-center justify-between">
-      <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-        <!-- Mobile menu button-->
-        
-      </div>
-      <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-        <div class="flex flex-shrink-0 items-center">
-          <img class="block h-8 w-auto lg:hidden" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
-          <img class="hidden h-8 w-auto lg:block" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
-          <h1 class="text-nord4 px-3 py-1 text-3xl">BeYou.</h1>
-        </div>
-        <div class="hidden sm:ml-6 sm:block">
-          <div class="flex flex-1 space-x-4 items-center justify-center">
-            <!-- Current: "bg-gray-900 text-nord4", Default: "text-nord5 hover:bg-nord1 hover:text-nord4" -->
-            <a href="#" class="bg-nord3 text-nord4 m-2 px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Add Your BeYou</a>
 
-            <a href="#" class="text-nord5 hover:bg-nord1 hover:text-nord4 px-3 py-2 rounded-md text-sm font-medium">See BeYous</a>
+<body class="h-screen flex flex-col bg-nord0">
+  <!-- This example requires Tailwind CSS v2.0+ -->
+  <nav class="dark bg-nord0 divide-y">
+    <div class="dark mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div class="dark relative flex h-20 items-center justify-between">
+        <div class="dark absolute inset-y-0 left-0 flex items-center sm:hidden">
+          <!-- Mobile menu button-->
+
+        </div>
+        <div class="dark flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+          <div class="dark flex flex-shrink-0 items-center">
+            <img class="dark hidden h-8 w-auto lg:block" src="beyoulogo.svg"
+              alt="Your Company">
+            <h1 class="text-nord4 px-3 py-1 text-3xl">
+              BeYou.</h1>
+          </div>
+          <div class="dark hidden sm:ml-6 sm:block">
+            <div class="dark flex flex-1 space-x-4 items-center justify-center">
+              <!-- Current: "bg-gray-900 text-nord4", Default: "text-nord5 hover:bg-nord1 hover:text-nord4" -->
+              <a href="addyourbeyou.html" class="dark bg-nord3 text-nord4 m-2 px-3 py-2 rounded-md text-sm font-medium"
+                aria-current="page">Add your BeYou</a>
+
+              <a href="find.html"
+                class="dark text-nord5 hover:bg-nord1 hover:text-nord4 px-3 py-2 rounded-md text-sm font-medium">Find
+                BeYous</a>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-        <button class="flex flex-cols">
-          <a href="#" class="flex flex-cols items-center space-x-4 text-nord5 hover:bg-nord1 hover:text-nord4 px-3 py-2 rounded-md text-sm font-medium">Find BeYous
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ml-2 text-nord5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-            </svg>
-          </a>              
-        </button>
+        <div class="dark absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <button class="dark flex flex-cols">
+            <a href="beyous.html"
+              class="dark flex flex-cols items-center space-x-4 text-nord5 hover:bg-nord1 hover:text-nord4 px-3 py-2 rounded-md text-sm font-medium">
+              See BeYous
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="dark w-6 h-6 ml-2 text-nord5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+              </svg>
+            </a>
+          </button>
+        </div>
       </div>
     </div>
+
+    <!-- Mobile menu, show/hide based on menu state. -->
+    <div class="dark sm:hidden" id="mobile-menu">
+      <div class="dark space-y-1 px-2 pt-2 pb-3">
+        <!-- Current: "bg-gray-900 text-nord4", Default: "text-nord5 hover:bg-nord1 hover:text-nord4" -->
+        <a href="#" class="dark bg-zinc-600 text-nord4 px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Add Your
+          BeYou</a>
+
+        <a href="#" class="dark text-nord5 hover:bg-nord1 hover:text-nord4 px-3 py-2 rounded-md text-sm font-medium">Find
+          BeYous</a>
+
+        <a href="#" class="dark text-nord5 hover:bg-nord1 hover:text-nord4 px-3 py-2 rounded-md text-sm font-medium">See
+          BeYous</a>
+      </div>
+    </div>
+    <hr class="dark space-y-1 border-1 border-nord3">
+  </nav>
+  <div class="dark h-4/5 flex flex-col justify-center items-center border-3" method="GET">
+    <form action="beyous.html" class="dark w-4/5 h-4/5 px-20 py-10 flex flex-col justify-center space-y-8" method="GET" id="addbeyou">
+      <div class="dark space-x-2 flex flex-row">
+        <h1 class="dark text-nord4 text-6xl font-extrabold">I want to </h1>
+        <h1 id="typeText"
+          class="dark font-extrabold text-transparent text-6xl bg-clip-text bg-gradient-to-r from-nord8 to-nord9">
+          BeContent.
+        </h1>
+      </div>
+
+      <div class="dark space-x-2 flex flex-row justify-center items-center">
+        <p1 class="dark text-5xl">😔</p1>
+        <input id="valueControl" name="value" type="range" value="50"
+          class="newthumb w-full h-3 bg-nord8 nord8 rounded-lg appearance-none cursor-pointer dark:bg-nord3">
+        <p1 class="text-5xl">😊</p1>
+      </div>
+      <div class="flex flex-col justify-between space-y-3">
+        <textarea id="message" rows="4" style="resize: none;"
+          class="text-xl block p-2.5 w-full text-gray-900 bg-gray-50 rounded-lg border border-nord2 focus:ring-nord2 focus:border-nord2 dark:bg-nord1 dark:border-nord0 dark:placeholder-gray-400 dark:text-nord8"
+          placeholder="Describe your BeYou..."></textarea>
+        <div class="flex flex-row justify-between">
+          <div class="flex flex-row justify-left around space-x-0.5 text-nord6">
+            <p1 id="characters" class="text-l font-bold">0</p1>
+            <p1 id="characterLabel" class="text-l"> characters</p1>
+          </div>
+          <button type="submit"
+            class="text-nord6 bg-gradient-to-r from-nord8 to-nord9 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-nord8 dark:focus:ring-nord9 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
+        </div>
+      </div>
+    </form>
   </div>
-
-  <!-- Mobile menu, show/hide based on menu state. -->
-  <div class="sm:hidden" id="mobile-menu">
-    <div class="space-y-1 px-2 pt-2 pb-3">
-      <!-- Current: "bg-gray-900 text-nord4", Default: "text-nord5 hover:bg-nord1 hover:text-nord4" -->
-      <a href="#" class="bg-zinc-600 text-nord4 px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Add Your BeYou</a>
-
-      <a href="#" class="text-nord5 hover:bg-nord1 hover:text-nord4 px-3 py-2 rounded-md text-sm font-medium">Find BeYous</a>
-
-      <a href="#" class="text-nord5 hover:bg-nord1 hover:text-nord4 px-3 py-2 rounded-md text-sm font-medium">See BeYous</a>
-    </div>
   </div>
   <hr class="space-y-1 border-1 border-nord3">
-</nav>
-<div class="h-full mx-20 my-20 text-center items-center justify-center sm:items-stretch sm:justify-start">
-  <h1 class="text-nord4 text-8xl">Make this boilerplate</h1>
-  <h1 class="font-extrabold text-transparent text-8xl bg-clip-text bg-gradient-to-r from-nord11 to-nord12">
-  BeBetter.
-</h1>
+  <footer class="flex flex-1 flex-col justify-center items-center text-center">
+    <h2 class="text-nord4 text-l text-medium">Made with ❤️ by the <b>bonobo</b> team at HackCMU.</h2>
+  </footer>
+  <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
+  <script>
+    var range = document.getElementById("valueControl");
+    var type = document.getElementById("typeText");
+    var message = document.getElementById("message");
+    var characters = document.getElementById("characters");
+    var characterLabel = document.getElementById("characterLabel");
+    var types = ["BeSad.", "BeDown.", "BeContent.", "BeHappy.", "BeEcstatic."];
 
+    range.addEventListener("input", changeType);
 
-</div>
+    function changeType() {
+      if (range.value < 20) {
+        type.innerText = types[0];
+      } else if (range.value < 40) {
+        type.innerText = types[1];
+      } else if (range.value < 60) {
+        type.innerText = types[2];
+      } else if (range.value < 80) {
+        type.innerText = types[3];
+      } else {
+        type.innerText = types[4];
+      }
+    }
 
+    message.addEventListener("input", changeCharacterCount);
+
+    function changeCharacterCount() {
+      characters.innerText = message.value.length;
+      if (message.value.length == 1) {
+        characterLabel.innerText = "character";
+      } else {
+        characterLabel.innerText = "characters";
+      }
+    }
+  </script>
+<script type = 'module'>
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+  import { getDatabase, push, set, child, ref} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-database.js";
+ 
+  const firebaseConfig = {
+    apiKey: "AIzaSyAHRbCmE_ynGBxlW0x5J9u9H3XBOrFhedA",
+    authDomain: "beyou-21d2f.firebaseapp.com",
+    databaseURL: "https://beyou-21d2f-default-rtdb.firebaseio.com",
+    projectId: "beyou-21d2f",
+    storageBucket: "beyou-21d2f.appspot.com",
+    messagingSenderId: "718679255077",
+    appId: "1:718679255077:web:a5d19b54e474a1d968b7cc",
+    measurementId: "G-FVD7M6CJ1Z"
+  };
+ 
+const app = initializeApp(firebaseConfig);
+
+var postDatabase = getDatabase(app);
+
+document.getElementById('addbeyou').addEventListener('submit', submit);
+
+function submit(e)
+{
+    e.preventDefault();
+
+    var date = new Date();
+    var type = document.getElementById("typeText").innerText;
+    var text = document.getElementById("message").value;
+    var value = document.getElementById("valueControl").value;
+    var location = "Tepper";
+    var time  = date.getHours() + ":"+date.getMinutes();
+    console.log('working');
+    saveMessages(location, type, value, text, time);
+}
+
+const saveMessages = (location, type, value, text, time) => 
+{
+    var newPost = push(child(ref(postDatabase), 'Posts'));
+
+    set(newPost,{
+        location: location,
+        type:type,
+        text:text,
+        value:value,
+        time: time,
+    }).then(function(){
+      window.location = "beyous.html?" + "value=" + value;
+    });
+
+};
+
+const getElementVal = (id) => {
+    return document.getElementById(id).value;
+};
+</script>
 </body>
-
-<script src="https://cdn.plot.ly/plotly-2.14.0.min.js"></script>
-<div id="myDiv" style="width: 960px; height: 600px; margin: 0 auto"></div>
-<script src="figures-histogram.js"></script>
-
-<!-- <div id="myDiv2" style="width: 1113px; height: 952px; margin: 0 auto"></div>
-<script src="figures-heatmap.js"></script> -->
-
-
-<div id="container-fluid" style="width: 1130px; height: 1000px; margin: 0 auto">                          
-   <iframe src="heatmap.html" width="1130" height="1000"></iframe>                          
-  </div>
-<!-- <script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/modules/export-data.js"></script>
-
-<div id="container" style="width: 960px; height: 600px; margin: 0 auto"></div>
-<script src="figures-charts.js"></script> -->
-
 
 </html>
