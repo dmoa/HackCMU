@@ -239,16 +239,16 @@ const app = initializeApp(firebaseConfig);
 
 var postDatabase = getDatabase(app);
 
-document.getElementByID('addbeyou').addEventListener('submit', submit);
+document.getElementById('addbeyou').addEventListener('submit', submit);
 
 function submit(e)
 {
     e.preventDefault();
 
     var date = new Date();
-    var type = getElementbyID("typeText");
-    var text = getElementById("message");
-    var value = getElementbyID("valueControl");
+    var type = document.getElementById("typeText");
+    var text = document.getElementById("message");
+    var value = document.getElementById("valueControl");
     var location = "Tepper";
     var time  = date.getHours() + ":"+date.getMinutes();
     console.log('working');
@@ -259,13 +259,13 @@ const saveMessages = (location, type, value, text, time) =>
 {
     var newPost = push(child(ref(postDatabase), 'beyous'));
 
-    newPost.set({
+    set(newPost,{
         location: location,
         type:type,
         text:text,
         value:value,
         time: time,
-    })
+    });
 };
 
 const getElementVal = (id) => {
