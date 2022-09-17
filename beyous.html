@@ -189,6 +189,9 @@
 
     const app = initializeApp(firebaseConfig);
 
+    // So we don't add duplicate posts
+    let current_posts_added = [];
+
     var postDatabase = getDatabase(app);
     function findPost(type) {
       const happyPost = ref(postDatabase);
@@ -197,15 +200,12 @@
       grid.innerHTML = "";
       onValue(posts, (snapshot) => {
         snapshot.forEach(function (childSnapshot) {
-        // Value is actually
-          if (childSnapshot.val().type == type) {
+        // Value = id
+          if (childSnapshot.val().type == type && ! current_posts_added.includes(childSnapshot.val().value)) {
 
-            console.log("---------------");
-            console.log(type);
-            console.log(childSnapshot.val().type);
-            console.log(childSnapshot.val().value);
-            console.log("We're trying to add: ");
-            console.log(childSnapshot.val().text);
+            current_posts_added.push(childSnapshot.val().value);
+
+            // Adding the html component
             grid.innerHTML += "<a href='#' class='dark bg-nord12 block w-full p-6 bg-nord1 rounded-lg border border-nord3 shadow-md hover:bg-nord2 dark:bg-nord1 dark:border-nord3 dark:hover:bg-nord3'> <h5 class='mb-2 text-2xl font-bold tracking-tight text-transparent text-3xl bg-clip-text bg-gradient-to-r from-nord8 to-nord9'>" + childSnapshot.val().text + "</h5> <p class='font-normal text-gray-700 dark:text-gray-400'>" + childSnapshot.val().time + "</p> </a>";
           }
         });
