@@ -243,13 +243,14 @@ document.getElementById('addbeyou').addEventListener('submit', submit);
 function submit(e)
 {
     e.preventDefault();
-
     var date = new Date();
     var type = document.getElementById("typeText").innerText;
     var text = document.getElementById("message").value;
     var value = document.getElementById("valueControl").value;
     var location = "Tepper";
-    var time  = date.getHours() + ":"+date.getMinutes();
+   
+     var time  = date.toLocaleDateString() + date.toLocaleTimeString();
+    
     console.log('working');
     saveMessages(location, type, value, text, time);
 }
