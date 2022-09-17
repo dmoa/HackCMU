@@ -109,8 +109,8 @@
           <div class="dark hidden sm:ml-6 sm:block">
             <div class="dark flex flex-1 space-x-4 items-center justify-center">
               <!-- Current: "bg-gray-900 text-nord4", Default: "text-nord5 hover:bg-nord1 hover:text-nord4" -->
-              <a href="#" class="dark bg-nord3 text-nord4 m-2 px-3 py-2 rounded-md text-sm font-medium"
-                aria-current="page">Add Your BeYou</a>
+              <a href="addyourbeyou.html" class="dark bg-nord3 text-nord4 m-2 px-3 py-2 rounded-md text-sm font-medium"
+                aria-current="page">Add your BeYou</a>
 
               <a href="#"
                 class="dark text-nord5 hover:bg-nord1 hover:text-nord4 px-3 py-2 rounded-md text-sm font-medium">Find
@@ -120,9 +120,9 @@
         </div>
         <div class="dark absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
           <button class="dark flex flex-cols">
-            <a href="#"
-              class="dark flex flex-cols items-center space-x-4 text-nord5 hover:bg-nord1 hover:text-nord4 px-3 py-2 rounded-md text-sm font-medium">See
-              BeYous
+            <a href="beyous.html"
+              class="dark flex flex-cols items-center space-x-4 text-nord5 hover:bg-nord1 hover:text-nord4 px-3 py-2 rounded-md text-sm font-medium">
+              See BeYous
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="dark w-6 h-6 ml-2 text-nord5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
@@ -149,10 +149,10 @@
     </div>
     <hr class="dark space-y-1 border-1 border-nord3">
   </nav>
-  <div class="dark h-4/5 flex flex-col justify-center items-center border-3">
-    <form class="dark w-4/5 h-4/5 px-20 py-10 flex flex-col justify-center space-y-8" method="post" id="addbeyou">
+  <div class="dark h-4/5 flex flex-col justify-center items-center border-3" method="GET">
+    <form action="beyous.html" class="dark w-4/5 h-4/5 px-20 py-10 flex flex-col justify-center space-y-8" method="GET" id="addbeyou">
       <div class="dark space-x-2 flex flex-row">
-        <h1 class="dark text-nord4 text-6xl">I want to </h1>
+        <h1 class="dark text-nord4 text-6xl font-extrabold">I want to </h1>
         <h1 id="typeText"
           class="dark font-extrabold text-transparent text-6xl bg-clip-text bg-gradient-to-r from-nord8 to-nord9">
           BeContent.
@@ -161,7 +161,7 @@
 
       <div class="dark space-x-2 flex flex-row justify-center items-center">
         <p1 class="dark text-5xl">😔</p1>
-        <input id="valueControl" type="range" value="50"
+        <input id="valueControl" name="value" type="range" value="50"
           class="newthumb w-full h-3 bg-nord8 nord8 rounded-lg appearance-none cursor-pointer dark:bg-nord3">
         <p1 class="text-5xl">😊</p1>
       </div>
