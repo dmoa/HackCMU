@@ -252,7 +252,6 @@ function submit(e)
     var time  = date.getHours() + ":"+date.getMinutes();
     console.log('working');
     saveMessages(location, type, value, text, time);
-    window.location = "beyous.html?" + "value=" + value;
 }
 
 const saveMessages = (location, type, value, text, time) => 
@@ -265,7 +264,10 @@ const saveMessages = (location, type, value, text, time) =>
         text:text,
         value:value,
         time: time,
+    }).then(function(){
+      window.location = "beyous.html?" + "value=" + value;
     });
+
 };
 
 const getElementVal = (id) => {
