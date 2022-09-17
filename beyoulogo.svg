@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600px" height="437px" viewBox="0 0 600 437" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Artboard</title>
+    <defs>
+        <radialGradient cx="0%" cy="50%" fx="0%" fy="50%" r="141.137069%" gradientTransform="translate(0.000000,0.500000),scale(0.683289,1.000000),translate(-0.000000,-0.500000)" id="radialGradient-1">
+            <stop stop-color="#88C0D0" offset="0%"></stop>
+            <stop stop-color="#81A1C1" offset="100%"></stop>
+        </radialGradient>
+    </defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20,27 L20,211.141081 C109.027947,206.931581 153.54192,237.431152 153.54192,302.639793 C153.54192,367.848434 109.027947,403.63517 20,410 L369.067015,410 C208.459826,218.959339 162.511018,100.810533 231.220593,55.5535841 C299.930167,10.2966347 356.343323,42.7633343 400.46006,152.953683 C448.654788,39.4200702 500.699996,6.95337055 556.595685,55.5535841 C612.491374,104.153798 570.458823,222.302603 430.498031,410" id="Path" stroke="url(#radialGradient-1)" stroke-width="35"></path>
+    </g>
+</svg>
