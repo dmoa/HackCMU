@@ -223,7 +223,8 @@
   </script>
 <script type = 'module'>
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
-  import { getDatabase } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-database.js";
+  import { getDatabase, push, set, child, ref} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-database.js";
+ 
   const firebaseConfig = {
     apiKey: "AIzaSyAHRbCmE_ynGBxlW0x5J9u9H3XBOrFhedA",
     authDomain: "beyou-21d2f.firebaseapp.com",
@@ -246,9 +247,9 @@ function submit(e)
     e.preventDefault();
 
     var date = new Date();
-    var type = document.getElementById("typeText");
-    var text = document.getElementById("message");
-    var value = document.getElementById("valueControl");
+    var type = document.getElementById("typeText").innerText;
+    var text = document.getElementById("message").value;
+    var value = document.getElementById("valueControl").value;
     var location = "Tepper";
     var time  = date.getHours() + ":"+date.getMinutes();
     console.log('working');
@@ -257,7 +258,7 @@ function submit(e)
 
 const saveMessages = (location, type, value, text, time) => 
 {
-    var newPost = push(child(ref(postDatabase), 'beyous'));
+    var newPost = push(child(ref(postDatabase), 'Posts'));
 
     set(newPost,{
         location: location,
