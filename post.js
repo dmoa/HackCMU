@@ -12,7 +12,7 @@ const firebaseConfig = {
  
 firebaseConfig.initializeApp(firebaseConfig);
 
-var postDatabase = firebaseConfig.databaseURL().ref('postData');
+var postDatabase = firebaseConfig.databaseURL().ref('addbeyou');
 
 document.getElementbyID('addbeyou').addEventListener('submit', submit)
 
