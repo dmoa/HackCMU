@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+      module.exports = {
+    theme: {
+      extend: {
+        colors: {
+          'regal-blue': '#243c5a',
+          /*
+          nord0->nord3, dark colors,"polar night"
+          nord4->nord6, light colors, "snow storm"
+          nord7 = pale green
+          nord8 = blue
+          nord9 = blue
+          nord10 = blue
+          nord11 = red
+          nord12 = orange
+          nord13 = yellow
+          nord14 = green
+          nord15 = purple
+          */
+          'nord0': '#2e3440',
+          'nord1': '#3b4252',
+          'nord2': '#434c5e',
+          'nord3': '#4c566a',
+          'nord4': '#d8dee9',
+          'nord5': '#e5e9f0',
+          'nord6': '#eceff4',
+          'nord7': '#8fbcbb',
+          'nord8': '#88c0d0',
+          'nord9': '#81a1c1',
+          'nord10': '#5e81ac',
+          'nord11': '#bf616a',
+          'nord12': '#d08770',
+          'nord13': '#ebcb8b',
+          'nord14': '#a3be8c',
+          'nord15': '#b48ead'
+        },
+        fontFamily: {
+        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        },
+      }
+    }
+  }
+
+  </script>
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-800">
+  <!-- This example requires Tailwind CSS v2.0+ -->
+<nav class="bg-zinc-800 divide-y">
+  <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+    <div class="relative flex h-20 items-center justify-between">
+      <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+        <!-- Mobile menu button-->
+        
+      </div>
+      <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+        <div class="flex flex-shrink-0 items-center">
+          <img class="block h-8 w-auto lg:hidden" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
+          <img class="hidden h-8 w-auto lg:block" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
+          <h1 class="text-white px-3 py-1 text-3xl">BeYou.</h1>
+        </div>
+        <div class="hidden sm:ml-6 sm:block">
+          <div class="flex flex-1 space-x-4 items-center justify-center">
+            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-nord2 hover:text-white" -->
+            <a href="#" class="bg-zinc-600 text-white m-2 px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Add Your BeYou</a>
+
+            <a href="#" class="text-gray-300 hover:bg-nord2 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Find BeYous</a>
+
+            <a href="#" class="text-gray-300 hover:bg-nord2 hover:text-white px-3 py-2 rounded-md text-sm font-medium">See BeYous</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu, show/hide based on menu state. -->
+  <div class="sm:hidden" id="mobile-menu">
+    <div class="space-y-1 px-2 pt-2 pb-3">
+      <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-nord2 hover:text-white" -->
+      <a href="#" class="bg-zinc-600 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Add Your BeYou</a>
+
+      <a href="#" class="text-gray-300 hover:bg-nord2 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Find BeYous</a>
+
+      <a href="#" class="text-gray-300 hover:bg-nord2 hover:text-white px-3 py-2 rounded-md text-sm font-medium">See BeYous</a>
+    </div>
+  </div>
+  <hr class="space-y-1 bg-nord0">
+</nav>
+<div class="h-screen mx-5 my-5 text-center items-center justify-center sm:items-stretch sm:justify-start">
+  <h1 class="text-white text-8xl">Make this boilerplate</h1>
+  <h1 class="font-extrabold text-transparent text-8xl bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+  BeBetter.
+</h1>
+
+
+</div>
+</body>
+</html>
